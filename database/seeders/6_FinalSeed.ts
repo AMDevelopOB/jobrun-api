@@ -12,7 +12,7 @@ import User from 'App/Models/User'
 export default class extends BaseSeeder {
   public async run() {
     User.updateOrCreateMany(
-      ['email', 'password', 'username', 'nombreCompleto', 'telefono', 'rol'],
+      ['id', 'email', 'password', 'username', 'nombreCompleto', 'telefono', 'rol'],
       [
         {
           id: 1,
@@ -82,6 +82,7 @@ export default class extends BaseSeeder {
 
     await Empresa.updateOrCreateMany(
       [
+        'id',
         'nombre',
         'descripcion',
         'ubicacion',
@@ -184,6 +185,7 @@ export default class extends BaseSeeder {
 
     await Oferta.updateOrCreateMany(
       [
+        'id',
         'nombre',
         'descripcion',
         'ubicacion',
