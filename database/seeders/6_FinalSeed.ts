@@ -11,7 +11,7 @@ import User from 'App/Models/User'
 
 export default class extends BaseSeeder {
   public async run() {
-    User.createMany([
+    User.updateOrCreateMany([
       {
         email: 'amdevelop@open-bootcamp.com',
         password: 'admin12345',
@@ -70,7 +70,7 @@ export default class extends BaseSeeder {
       },
     ])
 
-    await Empresa.createMany([
+    await Empresa.updateOrCreateMany([
       {
         nombre: 'Burger King S.A.',
         descripcion:
@@ -153,7 +153,7 @@ export default class extends BaseSeeder {
     const empresa5 = await Empresa.findByOrFail('id', 5)
     await empresa5.related('valores').attach([1, 6])
 
-    await Oferta.createMany([
+    await Oferta.updateOrCreateMany([
       {
         nombre: 'Front-End Developer',
         descripcion:
@@ -172,7 +172,7 @@ export default class extends BaseSeeder {
           '["En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.", "Alojar blogs o wikis en este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software."]',
         destacado: false,
         categoriaId: 1,
-        empresaId: 2,
+        empresaId: 1,
       },
       {
         nombre: 'Back-End Developer',
@@ -192,7 +192,7 @@ export default class extends BaseSeeder {
           '["En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.", "Alojar blogs o wikis en este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software."]',
         destacado: false,
         categoriaId: 2,
-        empresaId: 3,
+        empresaId: 2,
       },
       {
         nombre: 'Front-End & Back-End Developer',
@@ -212,7 +212,7 @@ export default class extends BaseSeeder {
           '["En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.", "Alojar blogs o wikis en este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software."]',
         destacado: false,
         categoriaId: 3,
-        empresaId: 4,
+        empresaId: 3,
       },
       {
         nombre: 'Front-End Developer',
@@ -232,7 +232,7 @@ export default class extends BaseSeeder {
           '["En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.", "Alojar blogs o wikis en este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software."]',
         destacado: false,
         categoriaId: 1,
-        empresaId: 6,
+        empresaId: 5,
       },
       {
         nombre: 'Back-End Developer',
@@ -252,7 +252,7 @@ export default class extends BaseSeeder {
           '["En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.", "Alojar blogs o wikis en este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software."]',
         destacado: false,
         categoriaId: 2,
-        empresaId: 3,
+        empresaId: 2,
       },
       {
         nombre: 'Front-End & Back-End Developer',
@@ -272,7 +272,7 @@ export default class extends BaseSeeder {
           '["En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.", "Alojar blogs o wikis en este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software."]',
         destacado: false,
         categoriaId: 3,
-        empresaId: 4,
+        empresaId: 3,
       },
     ])
 
