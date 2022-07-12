@@ -54,6 +54,9 @@
     "youch-terminal": "^2.1.4"
   },
   "dependencies": {
+    "@japa/preset-adonis": "^1.1.0",
+    "@japa/runner": "^2.0.9",
+    "adonis-preset-ts": "^2.1.0",
     "@adonisjs/assembler": "^5.7.0",
     "@adonisjs/attachment-lite": "^1.0.7",
     "@adonisjs/auth": "^8.2.1",
