@@ -12,7 +12,7 @@ import User from 'App/Models/User'
 export default class extends BaseSeeder {
   public async run() {
     User.updateOrCreateMany(
-      ['email', 'password', 'username', 'nombreCompleto', 'telefono', 'rol'],
+      ['password', 'username', 'nombreCompleto', 'telefono', 'rol'],
       [
         {
           email: 'amdevelop@open-bootcamp.com',
