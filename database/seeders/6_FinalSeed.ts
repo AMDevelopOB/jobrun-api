@@ -138,19 +138,19 @@ export default class extends BaseSeeder {
       },
     ])
 
-    const empresa1 = await Empresa.findByOrFail('id', 2)
+    const empresa1 = await Empresa.findByOrFail('id', 1)
     await empresa1.related('valores').attach([1, 2])
 
-    const empresa2 = await Empresa.findByOrFail('id', 3)
+    const empresa2 = await Empresa.findByOrFail('id', 2)
     await empresa2.related('valores').attach([1, 3, 4])
 
-    const empresa3 = await Empresa.findByOrFail('id', 4)
+    const empresa3 = await Empresa.findByOrFail('id', 3)
     await empresa3.related('valores').attach([1, 2, 3, 4, 5, 6])
 
-    const empresa4 = await Empresa.findByOrFail('id', 5)
+    const empresa4 = await Empresa.findByOrFail('id', 4)
     await empresa4.related('valores').attach([5, 6])
 
-    const empresa5 = await Empresa.findByOrFail('id', 6)
+    const empresa5 = await Empresa.findByOrFail('id', 5)
     await empresa5.related('valores').attach([1, 6])
 
     await Oferta.createMany([
@@ -276,32 +276,32 @@ export default class extends BaseSeeder {
       },
     ])
 
-    const oferta1 = await Oferta.findByOrFail('id', 2)
+    const oferta1 = await Oferta.findByOrFail('id', 1)
     await oferta1.related('idiomas').attach([1, 2, 4])
     await oferta1.related('tecnologias').attach([1, 2, 3, 4])
     await oferta1.related('beneficios').attach([1, 2, 3, 4, 5, 6])
 
-    const oferta2 = await Oferta.findByOrFail('id', 3)
+    const oferta2 = await Oferta.findByOrFail('id', 2)
     await oferta2.related('idiomas').attach([1, 2])
     await oferta2.related('tecnologias').attach([5, 6, 7])
     await oferta2.related('beneficios').attach([1, 6])
 
-    const oferta3 = await Oferta.findByOrFail('id', 4)
+    const oferta3 = await Oferta.findByOrFail('id', 3)
     await oferta3.related('idiomas').attach([1, 2, 4])
     await oferta3.related('tecnologias').attach([2, 6])
     await oferta3.related('beneficios').attach([4, 5, 6])
 
-    const oferta4 = await Oferta.findByOrFail('id', 5)
+    const oferta4 = await Oferta.findByOrFail('id', 4)
     await oferta4.related('idiomas').attach([1, 2, 4])
     await oferta4.related('tecnologias').attach([1, 2, 3, 4])
     await oferta4.related('beneficios').attach([1, 2, 3, 4, 5, 6])
 
-    const oferta5 = await Oferta.findByOrFail('id', 6)
+    const oferta5 = await Oferta.findByOrFail('id', 5)
     await oferta5.related('idiomas').attach([1, 2])
     await oferta5.related('tecnologias').attach([5, 6, 7])
     await oferta5.related('beneficios').attach([1, 6])
 
-    const oferta6 = await Oferta.findByOrFail('id', 7)
+    const oferta6 = await Oferta.findByOrFail('id', 6)
     await oferta6.related('idiomas').attach([1, 2, 4])
     await oferta6.related('tecnologias').attach([2, 6])
     await oferta6.related('beneficios').attach([4, 5, 6])
