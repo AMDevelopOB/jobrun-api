@@ -1,3 +1,4 @@
+import Database from '@ioc:Adonis/Lucid/Database'
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
 import { TipoEstado } from 'App/Models/Contracts/TipoEstado'
 import { TipoExperiencia } from 'App/Models/Contracts/TipoExperiencia'
@@ -323,5 +324,9 @@ export default class extends BaseSeeder {
     await oferta6.related('idiomas').attach([1, 2, 4])
     await oferta6.related('tecnologias').attach([2, 6])
     await oferta6.related('beneficios').attach([4, 5, 6])
+
+    Database.raw('ALTER SEQUENCE users_id_seq RESTART WITH 7;')
+    Database.raw('ALTER SEQUENCE empresas_id_seq RESTART WITH 5;')
+    Database.raw('ALTER SEQUENCE ofertas_id_seq RESTART WITH 6;')
   }
 }
