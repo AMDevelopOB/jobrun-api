@@ -30,6 +30,7 @@ export default class OfertasController {
 
     const ofertas = await Oferta.query()
       .withScopes((scopes) => {
+        console.log('Rol de user: ' + auth.user?.rol)
         if (auth.user) scopes.visibleTo(auth.user)
       })
       .if(nombre, (query) => query.where('nombre', 'ILIKE', `%${nombre}%`))
@@ -43,7 +44,9 @@ export default class OfertasController {
       .if(salarioMin, (query) => query.where('salario_min', '>=', salarioMin))
       .if(salarioMax, (query) => query.where('salario_max', '<=', salarioMax))
       .if(presencialidad, (query) => query.where('presencialidad', presencialidad))
-      .if(destacado, (query) => query.where('destacado', destacado))
+      .if(destacado, (query) => {
+        if (destacado) query.where('destacado', true)
+      })
       .if(tecnologias, (query) =>
         query.whereHas('tecnologias', (query) => query.whereIn('id', tecnologias))
       )
