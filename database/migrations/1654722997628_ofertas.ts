@@ -35,6 +35,7 @@ export default class extends BaseSchema {
       table.integer('vacantes')
       table.text('requisitos')
       table.text('adjunto').nullable()
+      table.string('slug').nullable()
       table.boolean('destacado').nullable().defaultTo(false)
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

@@ -16,6 +16,10 @@ Route.group(() => {
     Route.resource('/tecnologias', 'TecnologiasController').apiOnly()
     Route.resource('/beneficios', 'BeneficiosController').apiOnly()
     Route.resource('/idiomas', 'IdiomasController').apiOnly()
+    Route.resource('/valores', 'ValoresController').apiOnly()
+    Route.resource('/categorias', 'CategoriasController').apiOnly()
+    Route.resource('/paises', 'PaisesController').apiOnly()
+    Route.resource('/comunidades', 'ComunidadesController').apiOnly()
   }).middleware('auth')
 }).prefix('/godAPI')
 
@@ -25,4 +29,7 @@ Route.group(() => {
 
   Route.get('/empresas', 'EmpresasController.index')
   Route.get('/empresas/:id', 'EmpresasController.show')
+
+  Route.get('/categorias', 'CategoriasController.index')
+  Route.get('/tecnologias', 'TecnologiasController.index')
 }).prefix('/api')

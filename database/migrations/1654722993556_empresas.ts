@@ -18,6 +18,7 @@ export default class extends BaseSchema {
       table.string('creacion')
       table.integer('user_id').unsigned().references('users.id').notNullable()
       table.string('url')
+      table.string('slug').nullable()
       table.text('imagen').nullable()
 
       /**

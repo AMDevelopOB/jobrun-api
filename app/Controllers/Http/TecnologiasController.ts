@@ -2,6 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Tecnologia from 'App/Models/Tecnologia'
 import CreateTecnologiaValidator from 'App/Validators/CreateTecnologiaValidator'
 import SortValidator from 'App/Validators/SortValidator'
+import UpdateTecnologiaValidator from 'App/Validators/UpdateTecnologiaValidator'
 
 export default class TecnologiasController {
   public async index({ response, request }: HttpContextContract) {
@@ -38,7 +39,7 @@ export default class TecnologiasController {
   public async update({ request, response, params: { id } }: HttpContextContract) {
     const tecnologia = await Tecnologia.findOrFail(id)
 
-    const validatedData = await request.validate(CreateTecnologiaValidator)
+    const validatedData = await request.validate(UpdateTecnologiaValidator)
     tecnologia.merge(validatedData)
     await tecnologia.save()
 
