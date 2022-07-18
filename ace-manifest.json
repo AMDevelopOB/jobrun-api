@@ -1,5 +1,24 @@
 {
   "commands": {
+    "generate:slugs": {
+      "settings": {
+        "loadApp": true,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/GenerateSlugs",
+      "commandName": "generate:slugs",
+      "description": "Generates slugs for specified model",
+      "args": [
+        {
+          "type": "string",
+          "propertyName": "entity",
+          "name": "entity",
+          "required": true
+        }
+      ],
+      "aliases": [],
+      "flags": []
+    },
     "dump:rcfile": {
       "settings": {},
       "commandPath": "@adonisjs/core/build/commands/DumpRc",
