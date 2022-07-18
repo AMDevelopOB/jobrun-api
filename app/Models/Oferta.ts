@@ -3,8 +3,8 @@ import {
   belongsTo,
   BelongsTo,
   column,
-  HasOne,
   hasOne,
+  HasOne,
   ManyToMany,
   manyToMany,
   scope,
@@ -70,9 +70,15 @@ export default class Oferta extends AppBaseModel {
   public adjunto: AttachmentContract | null
 
   @column()
+  public slug: string
+
+  @column()
   public categoriaId: number
 
-  @hasOne(() => Categoria)
+  @hasOne(() => Categoria, {
+    localKey: 'categoriaId',
+    foreignKey: 'id',
+  })
   public categoria: HasOne<typeof Categoria>
 
   @column()

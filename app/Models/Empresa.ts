@@ -46,6 +46,9 @@ export default class Empresa extends AppBaseModel {
   @column()
   public creacion: string
 
+  @column()
+  public slug: string
+
   @manyToMany(() => Valor, {
     pivotTimestamps: true,
     pivotTable: 'valor_empresa',
