@@ -2,13 +2,13 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Valor from 'App/Models/Valor'
 import CreateValorValidator from 'App/Validators/CreateValorValidator'
 import SortValidator from 'App/Validators/SortValidator'
+import UpdateValorValidator from 'App/Validators/UpdateValorValidator'
 
 export default class ValoresController {
   public async index({ response, request }: HttpContextContract) {
     const page = request.input('page', 1) ?? 1
     const limit = request.input('limit', 10) ?? 10
     const nombre = request.input('nombre') ?? null
-    const descripcion = request.input('descripcion') ?? null
     const validatedData = await request.validate(SortValidator)
 
     const sortBy = validatedData.sort_by || 'nombre'
@@ -16,7 +16,6 @@ export default class ValoresController {
 
     const valores = await Valor.query()
       .if(nombre, (query) => query.where('nombre', 'ILIKE', `%${nombre}%`))
-      .if(descripcion, (query) => query.where('descripcion', 'ILIKE', `%${descripcion}%`))
       .orderBy(sortBy, order)
       .paginate(page, limit)
 
@@ -40,7 +39,7 @@ export default class ValoresController {
   public async update({ request, response, params: { id } }: HttpContextContract) {
     const valor = await Valor.findOrFail(id)
 
-    const validatedData = await request.validate(CreateValorValidator)
+    const validatedData = await request.validate(UpdateValorValidator)
     valor.merge(validatedData)
     await valor.save()
 
