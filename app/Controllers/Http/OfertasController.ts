@@ -31,7 +31,6 @@ export default class OfertasController {
 
     const ofertas = await Oferta.query()
       .withScopes((scopes) => {
-        console.log('Rol de user: ' + auth.user?.rol)
         if (auth.user) scopes.visibleTo(auth.user)
       })
       .if(nombre, (query) => query.where('nombre', 'ILIKE', `%${nombre}%`))
@@ -69,6 +68,20 @@ export default class OfertasController {
   public async show({ params: { id }, response }: HttpContextContract) {
     const oferta = await Oferta.query(id)
       .where('id', id)
+      .preload('comunidad', (query) => query.preload('pais'))
+      .preload('tecnologias')
+      .preload('beneficios')
+      .preload('categoria')
+      .preload('idiomas')
+      .preload('empresa')
+      .firstOrFail()
+
+    return response.ok({ data: oferta })
+  }
+
+  public async findBySlug({ params: { slug }, response }: HttpContextContract) {
+    const oferta = await Oferta.query()
+      .where('slug', slug)
       .preload('comunidad', (query) => query.preload('pais'))
       .preload('tecnologias')
       .preload('beneficios')

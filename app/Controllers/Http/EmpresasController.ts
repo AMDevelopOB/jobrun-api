@@ -77,6 +77,16 @@ export default class EmpresasController {
     return response.ok({ data: empresa })
   }
 
+  public async findBySlug({ params: { slug }, response }: HttpContextContract) {
+    const empresa = await Empresa.query()
+      .where('slug', slug)
+      .preload('user')
+      .preload('comunidad', (query) => query.preload('pais'))
+      .firstOrFail()
+
+    return response.ok({ data: empresa })
+  }
+
   public async destroy({ params: { id }, response }: HttpContextContract) {
     const empresa = await Empresa.findOrFail(id)
 

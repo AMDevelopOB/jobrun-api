@@ -25,10 +25,10 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get('/ofertas', 'OfertasController.index')
-  Route.get('/ofertas/:id', 'OfertasController.show')
+  Route.get('/ofertas/:slug', 'OfertasController.findBySlug')
 
   Route.get('/empresas', 'EmpresasController.index')
-  Route.get('/empresas/:id', 'EmpresasController.show')
+  Route.get('/empresas/:slug', 'EmpresasController.findBySlug')
 
   Route.get('/categorias', 'CategoriasController.index')
   Route.get('/tecnologias', 'TecnologiasController.index')
