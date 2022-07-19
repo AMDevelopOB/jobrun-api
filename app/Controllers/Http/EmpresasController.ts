@@ -27,6 +27,7 @@ export default class EmpresasController {
       .if(creacion, (query) => query.where('creacion', 'ILIKE', creacion))
       .preload('comunidad')
       .preload('pais')
+      .preload('valores')
       .preload('ofertas')
       .preload('user')
       .orderBy(sortBy, order)
@@ -69,9 +70,11 @@ export default class EmpresasController {
   public async show({ params: { id }, response }: HttpContextContract) {
     const empresa = await Empresa.query(id)
       .where('id', id)
-      .preload('user')
       .preload('comunidad')
       .preload('pais')
+      .preload('valores')
+      .preload('ofertas')
+      .preload('user')
       .firstOrFail()
 
     return response.ok({ data: empresa })
@@ -80,9 +83,11 @@ export default class EmpresasController {
   public async findBySlug({ params: { slug }, response }: HttpContextContract) {
     const empresa = await Empresa.query()
       .where('slug', slug)
-      .preload('user')
       .preload('comunidad')
       .preload('pais')
+      .preload('valores')
+      .preload('ofertas')
+      .preload('user')
       .firstOrFail()
 
     return response.ok({ data: empresa })

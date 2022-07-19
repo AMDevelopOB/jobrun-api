@@ -41,11 +41,11 @@ export default class User extends AppBaseModel {
     }
   }
 
-  public static visibleTo = scope((query, user?: User) => {
+  public static visibleTo = scope(async (query, user?: User) => {
     if (isAdmin(user)) {
       return
     } else {
-      query.whereNot('rol', TipoRol.ADMIN)
+      await query.whereNot('rol', TipoRol.ADMIN)
     }
   })
 }

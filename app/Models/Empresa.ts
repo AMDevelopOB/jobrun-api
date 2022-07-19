@@ -83,11 +83,11 @@ export default class Empresa extends AppBaseModel {
   @hasMany(() => Oferta)
   public ofertas: HasMany<typeof Oferta>
 
-  public static visibleTo = scope((query, user?: User) => {
+  public static visibleTo = scope(async (query, user?: User) => {
     if (isAdmin(user)) {
       return
     } else {
-      query.where('user_id', '=', user!.id)
+      await query.where('user_id', '=', user!.id)
     }
   })
 }
