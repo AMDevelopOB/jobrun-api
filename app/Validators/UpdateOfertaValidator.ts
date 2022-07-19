@@ -12,7 +12,7 @@ export default class UpdateOfertaValidator {
   public schema = schema.create({
     nombre: schema.string.optional({}),
     descripcion: schema.string.optional({}),
-    ubicacion: schema.string.optional({}),
+    comunidadId: schema.number.optional([rules.exists({ table: 'comunidades', column: 'id' })]),
     experiencia: schema.enum.optional(Object.values(TipoExperiencia)),
     presencialidad: schema.enum.optional(Object.values(TipoPresencialidad)),
     jornada: schema.enum.optional(Object.values(TipoJornada)),

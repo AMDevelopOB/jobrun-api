@@ -12,7 +12,7 @@ export default class CreateEmpresaValidator {
       }),
     ]),
     descripcion: schema.string({}),
-    ubicacion: schema.string.optional({}),
+    comunidadId: schema.number([rules.exists({ table: 'comunidades', column: 'id' })]),
     url: schema.string.optional({}),
     enlaceTwitter: schema.string.optional({}),
     enlaceLinkedin: schema.string.optional({}),

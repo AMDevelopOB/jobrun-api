@@ -89,7 +89,7 @@ export default class extends BaseSeeder {
           nombre: 'Burger King S.A.',
           descripcion:
             'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
-          ubicacion: 'España, Madrid',
+          comunidadId: 3,
           url: 'https://www.burgerking.es/',
           userId: 3,
           enlaceTwitter: 'https://twitter.com/',
@@ -103,7 +103,7 @@ export default class extends BaseSeeder {
           nombre: 'Servinform',
           descripcion:
             'Servinform somos lideres en servicios digitales y transformación digital 360º. Especialistas en externalización de servicios para empresas.',
-          ubicacion: 'España, Sevilla',
+          comunidadId: 1,
           url: 'https://www.servinform.es/en/',
           userId: 4,
           enlaceTwitter: 'https://twitter.com/',
@@ -117,7 +117,7 @@ export default class extends BaseSeeder {
           nombre: 'OpenBootcamp',
           descripcion:
             'Especialízate en desarrollo independientemente de tu nivel de conocimientos y experiencia, nosotros nos adaptaremos a tus objetivos.',
-          ubicacion: 'España, Valencia',
+          comunidadId: 3,
           url: 'https://open-bootcamp.com/',
           userId: 5,
           enlaceTwitter: 'https://twitter.com/',
@@ -131,7 +131,7 @@ export default class extends BaseSeeder {
           nombre: 'Proxya',
           descripcion:
             'Proxya es una empresa especializada en servicios de BPO, Factoría de Software y Soporte Avanzado en búsqueda de desarrolladores Java que participen en un proyecto para la administración pública.',
-          ubicacion: 'España, Madrid',
+          comunidadId: 1,
           url: 'https://www.proxya.com/',
           userId: 6,
           enlaceTwitter: 'https://twitter.com/',
@@ -145,7 +145,7 @@ export default class extends BaseSeeder {
           nombre: 'New Talent',
           descripcion:
             'Somos una Consultora de Recursos Humanos especializada en atracción de talentos.',
-          ubicacion: 'Argentina, Buenos Aires',
+          comunidadId: 30,
           url: 'https://newtalent.com.ar/',
           userId: 7,
           enlaceTwitter: 'https://twitter.com/',
@@ -178,7 +178,7 @@ export default class extends BaseSeeder {
         nombre: 'Front-End Developer',
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
-        ubicacion: 'España, Alicante',
+        comunidadId: 3,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.JUNIOR,
         presencialidad: TipoPresencialidad.PRESENCIAL,
@@ -199,7 +199,7 @@ export default class extends BaseSeeder {
         nombre: 'Back-End Developer',
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
-        ubicacion: 'España, Badajoz',
+        comunidadId: 1,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.SEMI_SENIOR,
         presencialidad: TipoPresencialidad.PRESENCIAL,
@@ -220,7 +220,7 @@ export default class extends BaseSeeder {
         nombre: 'Front-End & Back-End Developer',
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
-        ubicacion: 'España, Alicante',
+        comunidadId: 3,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.SENIOR,
         presencialidad: TipoPresencialidad.REMOTO,
@@ -241,7 +241,7 @@ export default class extends BaseSeeder {
         nombre: 'Front-End Developer',
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
-        ubicacion: 'Argentina, Buenos Aires',
+        comunidadId: 30,
         region: TipoRegion.LATAM,
         experiencia: TipoExperiencia.JUNIOR,
         presencialidad: TipoPresencialidad.REMOTO,
@@ -262,7 +262,7 @@ export default class extends BaseSeeder {
         nombre: 'Back-End Developer',
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
-        ubicacion: 'España, Badajoz',
+        comunidadId: 3,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.SEMI_SENIOR,
         presencialidad: TipoPresencialidad.PRESENCIAL,
@@ -283,7 +283,7 @@ export default class extends BaseSeeder {
         nombre: 'Front-End & Back-End Developer',
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
-        ubicacion: 'España, Alicante',
+        comunidadId: 1,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.SENIOR,
         presencialidad: TipoPresencialidad.REMOTO,

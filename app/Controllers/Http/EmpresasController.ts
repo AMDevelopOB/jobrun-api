@@ -25,6 +25,7 @@ export default class EmpresasController {
       .if(nombre, (query) => query.where('nombre', 'ILIKE', `%${nombre}%`))
       .if(descripcion, (query) => query.where('descripcion', 'ILIKE', `%${descripcion}%`))
       .if(creacion, (query) => query.where('creacion', 'ILIKE', creacion))
+      .preload('comunidad', (query) => query.preload('pais'))
       .preload('ofertas')
       .preload('user')
       .orderBy(sortBy, order)
@@ -67,7 +68,11 @@ export default class EmpresasController {
   }
 
   public async show({ params: { id }, response }: HttpContextContract) {
-    const empresa = await Empresa.query(id).where('id', id).preload('user').firstOrFail()
+    const empresa = await Empresa.query(id)
+      .where('id', id)
+      .preload('user')
+      .preload('comunidad', (query) => query.preload('pais'))
+      .firstOrFail()
 
     return response.ok({ data: empresa })
   }

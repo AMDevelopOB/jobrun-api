@@ -1,5 +1,6 @@
-import { column } from '@ioc:Adonis/Lucid/Orm'
+import { column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import AppBaseModel from './AppBaseModel'
+import Comunidad from './Comunidad'
 
 export default class Pais extends AppBaseModel {
   public static table = 'paises'
@@ -8,4 +9,9 @@ export default class Pais extends AppBaseModel {
 
   @column()
   public bandera: string
+
+  @hasMany(() => Comunidad, {
+    foreignKey: 'id',
+  })
+  public comunidades: HasMany<typeof Comunidad>
 }
