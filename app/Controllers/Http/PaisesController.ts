@@ -15,6 +15,7 @@ export default class PaisesController {
 
     const paises = await Paises.query()
       .if(nombre, (query) => query.where('nombre', 'ILIKE', `%${nombre}%`))
+      .preload('comunidades')
       .orderBy(sortBy, order)
       .paginate(page, limit)
 
@@ -23,6 +24,8 @@ export default class PaisesController {
 
   public async show({ params: { id }, response }: HttpContextContract) {
     const pais = await Paises.findOrFail(id)
+
+    await pais.preload('comunidades')
 
     return response.ok({ data: pais })
   }

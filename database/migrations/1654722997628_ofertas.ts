@@ -14,7 +14,7 @@ export default class extends BaseSchema {
 
       table.string('nombre').notNullable()
       table.text('descripcion').notNullable()
-      table.string('ubicacion')
+      table.integer('comunidad_id').unsigned().references('comunidades.id').index()
       table.integer('empresa_id').unsigned().references('empresas.id').index().onDelete('CASCADE')
       table.integer('categoria_id').unsigned().references('categorias.id').index()
       table

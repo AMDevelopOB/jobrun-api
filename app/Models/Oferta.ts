@@ -22,6 +22,7 @@ import Tecnologia from './Tecnologia'
 import Idioma from './Idioma'
 import User from './User'
 import Categoria from './Categoria'
+import Comunidad from './Comunidad'
 
 export default class Oferta extends AppBaseModel {
   @column()
@@ -29,9 +30,6 @@ export default class Oferta extends AppBaseModel {
 
   @column()
   public descripcion: string
-
-  @column()
-  public ubicacion: string
 
   @column()
   public region: TipoRegion
@@ -71,6 +69,15 @@ export default class Oferta extends AppBaseModel {
 
   @column()
   public slug: string
+
+  @column()
+  public comunidadId: number
+
+  @hasOne(() => Comunidad, {
+    localKey: 'comunidadId',
+    foreignKey: 'id',
+  })
+  public comunidad: HasOne<typeof Comunidad>
 
   @column()
   public categoriaId: number

@@ -5,12 +5,15 @@ import {
   column,
   hasMany,
   HasMany,
+  hasOne,
+  HasOne,
   ManyToMany,
   manyToMany,
   scope,
 } from '@ioc:Adonis/Lucid/Orm'
 import { isAdmin } from 'App/Services/AuthService'
 import AppBaseModel from './AppBaseModel'
+import Comunidad from './Comunidad'
 import Oferta from './Oferta'
 import User from './User'
 import Valor from './Valor'
@@ -18,9 +21,6 @@ import Valor from './Valor'
 export default class Empresa extends AppBaseModel {
   @column()
   public nombre: string
-
-  @column()
-  public ubicacion: string
 
   @column()
   public descripcion: string
@@ -48,6 +48,15 @@ export default class Empresa extends AppBaseModel {
 
   @column()
   public slug: string
+
+  @column()
+  public comunidadId: number
+
+  @hasOne(() => Comunidad, {
+    localKey: 'comunidadId',
+    foreignKey: 'id',
+  })
+  public comunidad: HasOne<typeof Comunidad>
 
   @manyToMany(() => Valor, {
     pivotTimestamps: true,
