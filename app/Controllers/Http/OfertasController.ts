@@ -53,7 +53,8 @@ export default class OfertasController {
       .if(beneficios, (query) =>
         query.whereHas('beneficios', (query) => query.whereIn('id', beneficios))
       )
-      .preload('comunidad', (query) => query.preload('pais'))
+      .preload('comunidad')
+      .preload('pais')
       .preload('tecnologias')
       .preload('beneficios')
       .preload('categoria')
@@ -68,7 +69,8 @@ export default class OfertasController {
   public async show({ params: { id }, response }: HttpContextContract) {
     const oferta = await Oferta.query(id)
       .where('id', id)
-      .preload('comunidad', (query) => query.preload('pais'))
+      .preload('comunidad')
+      .preload('pais')
       .preload('tecnologias')
       .preload('beneficios')
       .preload('categoria')
@@ -82,7 +84,8 @@ export default class OfertasController {
   public async findBySlug({ params: { slug }, response }: HttpContextContract) {
     const oferta = await Oferta.query()
       .where('slug', slug)
-      .preload('comunidad', (query) => query.preload('pais'))
+      .preload('comunidad')
+      .preload('pais')
       .preload('tecnologias')
       .preload('beneficios')
       .preload('categoria')

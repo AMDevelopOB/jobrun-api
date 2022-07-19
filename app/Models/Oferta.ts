@@ -23,6 +23,7 @@ import Idioma from './Idioma'
 import User from './User'
 import Categoria from './Categoria'
 import Comunidad from './Comunidad'
+import Pais from './Pais'
 
 export default class Oferta extends AppBaseModel {
   @column()
@@ -69,6 +70,15 @@ export default class Oferta extends AppBaseModel {
 
   @column()
   public slug: string
+
+  @column()
+  public paisId: number
+
+  @hasOne(() => Pais, {
+    localKey: 'paisId',
+    foreignKey: 'id',
+  })
+  public pais: HasOne<typeof Pais>
 
   @column()
   public comunidadId: number

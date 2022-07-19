@@ -19,6 +19,7 @@ export default class CreateOfertaValidator {
     empresaId: schema.number([rules.exists({ table: 'empresas', column: 'id' })]),
     categoriaId: schema.number([rules.exists({ table: 'categorias', column: 'id' })]),
     comunidadId: schema.number([rules.exists({ table: 'comunidades', column: 'id' })]),
+    paisId: schema.number([rules.exists({ table: 'paises', column: 'id' })]),
     salarioMin: schema.number.optional(),
     salarioMax: schema.number.optional(),
     vacantes: schema.number.optional(),

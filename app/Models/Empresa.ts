@@ -15,6 +15,7 @@ import { isAdmin } from 'App/Services/AuthService'
 import AppBaseModel from './AppBaseModel'
 import Comunidad from './Comunidad'
 import Oferta from './Oferta'
+import Pais from './Pais'
 import User from './User'
 import Valor from './Valor'
 
@@ -48,6 +49,15 @@ export default class Empresa extends AppBaseModel {
 
   @column()
   public slug: string
+
+  @column()
+  public paisId: number
+
+  @hasOne(() => Pais, {
+    localKey: 'paisId',
+    foreignKey: 'id',
+  })
+  public pais: HasOne<typeof Pais>
 
   @column()
   public comunidadId: number

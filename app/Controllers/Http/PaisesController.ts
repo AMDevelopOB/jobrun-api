@@ -2,6 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Paises from 'App/Models/Pais'
 import CreatePaiseValidator from 'App/Validators/CreatePaiseValidator'
 import SortValidator from 'App/Validators/SortValidator'
+import UpdatePaiseValidator from 'App/Validators/UpdatePaiseValidator'
 
 export default class PaisesController {
   public async index({ response, request }: HttpContextContract) {
@@ -41,7 +42,7 @@ export default class PaisesController {
   public async update({ request, response, params: { id } }: HttpContextContract) {
     const pais = await Paises.findOrFail(id)
 
-    const validatedData = await request.validate(CreatePaiseValidator)
+    const validatedData = await request.validate(UpdatePaiseValidator)
     pais.merge(validatedData)
     await pais.save()
 

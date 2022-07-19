@@ -9,6 +9,7 @@ import { TipoRol } from 'App/Models/Contracts/TipoRol'
 import Empresa from 'App/Models/Empresa'
 import Oferta from 'App/Models/Oferta'
 import User from 'App/Models/User'
+import generateSlug from 'App/Strategies/GenerateSlugsStrategy'
 
 export default class extends BaseSeeder {
   public async run() {
@@ -89,7 +90,8 @@ export default class extends BaseSeeder {
           nombre: 'Burger King S.A.',
           descripcion:
             'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
-          comunidadId: 3,
+          comunidadId: 1,
+          paisId: 1,
           url: 'https://www.burgerking.es/',
           userId: 3,
           enlaceTwitter: 'https://twitter.com/',
@@ -97,13 +99,15 @@ export default class extends BaseSeeder {
           enlaceBehance: 'https://behance.com/',
           numEmpleados: '2500',
           creacion: '1996',
+          slug: await generateSlug('Burger King S.A.'),
         },
         {
           id: 2,
           nombre: 'Servinform',
           descripcion:
             'Servinform somos lideres en servicios digitales y transformación digital 360º. Especialistas en externalización de servicios para empresas.',
-          comunidadId: 1,
+          comunidadId: 3,
+          paisId: 1,
           url: 'https://www.servinform.es/en/',
           userId: 4,
           enlaceTwitter: 'https://twitter.com/',
@@ -111,6 +115,7 @@ export default class extends BaseSeeder {
           enlaceBehance: 'https://behance.com/',
           numEmpleados: '500',
           creacion: '2003',
+          slug: await generateSlug('Servinform'),
         },
         {
           id: 3,
@@ -118,6 +123,7 @@ export default class extends BaseSeeder {
           descripcion:
             'Especialízate en desarrollo independientemente de tu nivel de conocimientos y experiencia, nosotros nos adaptaremos a tus objetivos.',
           comunidadId: 3,
+          paisId: 1,
           url: 'https://open-bootcamp.com/',
           userId: 5,
           enlaceTwitter: 'https://twitter.com/',
@@ -125,6 +131,7 @@ export default class extends BaseSeeder {
           enlaceBehance: 'https://behance.com/',
           numEmpleados: '50',
           creacion: '2021',
+          slug: await generateSlug('OpenBootcamp'),
         },
         {
           id: 4,
@@ -132,6 +139,7 @@ export default class extends BaseSeeder {
           descripcion:
             'Proxya es una empresa especializada en servicios de BPO, Factoría de Software y Soporte Avanzado en búsqueda de desarrolladores Java que participen en un proyecto para la administración pública.',
           comunidadId: 1,
+          paisId: 1,
           url: 'https://www.proxya.com/',
           userId: 6,
           enlaceTwitter: 'https://twitter.com/',
@@ -139,6 +147,7 @@ export default class extends BaseSeeder {
           enlaceBehance: 'https://behance.com/',
           numEmpleados: '250',
           creacion: '2002',
+          slug: await generateSlug('Proxya'),
         },
         {
           id: 5,
@@ -146,6 +155,7 @@ export default class extends BaseSeeder {
           descripcion:
             'Somos una Consultora de Recursos Humanos especializada en atracción de talentos.',
           comunidadId: 30,
+          paisId: 2,
           url: 'https://newtalent.com.ar/',
           userId: 7,
           enlaceTwitter: 'https://twitter.com/',
@@ -153,6 +163,7 @@ export default class extends BaseSeeder {
           enlaceBehance: 'https://behance.com/',
           numEmpleados: '5000',
           creacion: '2019',
+          slug: await generateSlug('New Talent'),
         },
       ]
     )
@@ -179,6 +190,7 @@ export default class extends BaseSeeder {
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
         comunidadId: 3,
+        paisId: 1,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.JUNIOR,
         presencialidad: TipoPresencialidad.PRESENCIAL,
@@ -193,6 +205,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 1,
         empresaId: 1,
+        slug: await generateSlug('Front-End Developer'),
       },
       {
         id: 2,
@@ -200,6 +213,7 @@ export default class extends BaseSeeder {
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
         comunidadId: 1,
+        paisId: 1,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.SEMI_SENIOR,
         presencialidad: TipoPresencialidad.PRESENCIAL,
@@ -214,6 +228,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 2,
         empresaId: 2,
+        slug: await generateSlug('Back-End Developer'),
       },
       {
         id: 3,
@@ -221,6 +236,7 @@ export default class extends BaseSeeder {
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
         comunidadId: 3,
+        paisId: 1,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.SENIOR,
         presencialidad: TipoPresencialidad.REMOTO,
@@ -235,6 +251,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 3,
         empresaId: 3,
+        slug: await generateSlug('Front-End & Back-End Developer'),
       },
       {
         id: 4,
@@ -242,6 +259,7 @@ export default class extends BaseSeeder {
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
         comunidadId: 30,
+        paisId: 2,
         region: TipoRegion.LATAM,
         experiencia: TipoExperiencia.JUNIOR,
         presencialidad: TipoPresencialidad.REMOTO,
@@ -256,6 +274,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 1,
         empresaId: 5,
+        slug: await generateSlug('Front-End Developer'),
       },
       {
         id: 5,
@@ -263,6 +282,7 @@ export default class extends BaseSeeder {
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
         comunidadId: 3,
+        paisId: 1,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.SEMI_SENIOR,
         presencialidad: TipoPresencialidad.PRESENCIAL,
@@ -277,6 +297,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 2,
         empresaId: 2,
+        slug: await generateSlug('Back-End Developer'),
       },
       {
         id: 6,
@@ -284,6 +305,7 @@ export default class extends BaseSeeder {
         descripcion:
           'En este puesto de trabajo aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software. Podrás crear sitios de hosting web donde se acceda a espacios de trabajo compartido, almacenando información y documentos, así como alojar blogs o wikis.En este curso aprenderás a manejar la plataforma de colaboración empresarial así como sus productos y elementos de software.',
         comunidadId: 1,
+        paisId: 1,
         region: TipoRegion.EUROPA,
         experiencia: TipoExperiencia.SENIOR,
         presencialidad: TipoPresencialidad.REMOTO,
@@ -298,6 +320,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 3,
         empresaId: 3,
+        slug: await generateSlug('Front-End & Back-End Developer'),
       },
     ])
 

@@ -13,6 +13,7 @@ export default class UpdateEmpresaValidator {
     ]),
     descripcion: schema.string.optional({}),
     comunidadId: schema.number.optional([rules.exists({ table: 'comunidades', column: 'id' })]),
+    paisId: schema.number.optional([rules.exists({ table: 'paises', column: 'id' })]),
     enlaceTwitter: schema.string.optional({}),
     enlaceLinkedin: schema.string.optional({}),
     enlaceBehance: schema.string.optional({}),

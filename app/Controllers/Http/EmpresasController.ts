@@ -36,10 +36,10 @@ export default class EmpresasController {
 
   public async store({ request, response }: HttpContextContract) {
     const imagen = request.file('imagen') || null
-
     const validatedData = await request.validate(CreateEmpresaValidator)
-
     const empresa = await Empresa.create(validatedData)
+
+    empresa.slug = await generateSlug(empresa.nombre)
 
     if (imagen) empresa.imagen = Attachment.fromFile(imagen)
 
@@ -59,8 +59,6 @@ export default class EmpresasController {
     else {
       if (borraImagen) empresa.imagen = null
     }
-
-    empresa.slug = await generateSlug(empresa.nombre)
 
     await empresa.save()
 
