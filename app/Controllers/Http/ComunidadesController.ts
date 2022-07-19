@@ -3,13 +3,12 @@ import SortValidator from 'App/Validators/SortValidator'
 import Comunidades from 'App/Models/Comunidad'
 import CreateComunidadeValidator from 'App/Validators/CreateComunidadeValidator'
 import UpdateComunidadeValidator from 'App/Validators/UpdateComunidadeValidator'
-import { isNonNullExpression } from 'typescript'
 
 export default class ComunidadesController {
   public async index({ response, request }: HttpContextContract) {
     const page = request.input('page', 1) ?? 1
     const limit = request.input('limit', 10) ?? 10
-    const nombre = request.input('nombre') ?? isNonNullExpression
+    const nombre = request.input('nombre') ?? null
     const validatedData = await request.validate(SortValidator)
 
     const sortBy = validatedData.sort_by || 'nombre'
