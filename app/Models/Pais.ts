@@ -11,7 +11,7 @@ export default class Pais extends AppBaseModel {
   public bandera: string
 
   @hasMany(() => Comunidad, {
-    foreignKey: 'id',
+    foreignKey: 'pais_id',
   })
   public comunidades: HasMany<typeof Comunidad>
 }
