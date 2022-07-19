@@ -126,7 +126,6 @@ export default class Oferta extends AppBaseModel {
     if (isAdmin(user)) {
       return
     } else {
-      await user?.load('empresas')
       const empresas = await user?.toObject().empresas.map((empresa) => empresa.id)
       query.whereIn('empresa_id', empresas)
     }
