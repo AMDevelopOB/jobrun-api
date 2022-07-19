@@ -127,7 +127,7 @@ export default class Oferta extends AppBaseModel {
       return
     } else {
       await user?.load('empresas')
-      const empresas = user?.toObject().empresas.map((empresa) => empresa.id)
+      const empresas = await user?.toObject().empresas.map((empresa) => empresa.id)
       query.whereIn('empresa_id', empresas)
     }
   })
