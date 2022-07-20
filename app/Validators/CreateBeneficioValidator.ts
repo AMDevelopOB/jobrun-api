@@ -11,7 +11,7 @@ export default class CreateBeneficioValidator {
         column: 'nombre',
       }),
     ]),
-    descripcion: schema.string({}),
+    descripcion: schema.string.optional({}),
   })
 
   public messages: CustomMessages = {}
