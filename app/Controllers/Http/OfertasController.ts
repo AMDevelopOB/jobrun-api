@@ -30,9 +30,7 @@ export default class OfertasController {
     const order = validatedData.order || 'asc'
 
     const ofertas = await Oferta.query()
-      .withScopes((scopes) => {
-        if (auth.user) scopes.visibleTo(auth.user)
-      })
+      .if(auth, (query) => query.withScopes((scope) => scope.visibleTo(auth.user)))
       .if(nombre, (query) => query.where('nombre', 'ILIKE', `%${nombre}%`))
       .if(region, (query) => query.where('region', region))
       .if(experiencia, (query) => query.where('experiencia', experiencia))
