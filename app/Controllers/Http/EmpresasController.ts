@@ -40,14 +40,13 @@ export default class EmpresasController {
     const imagen = request.file('imagen') || null
     const validatedData = await request.validate(CreateEmpresaValidator)
     const empresa = await Empresa.create(validatedData)
-
-    empresa.slug = await generateSlug(empresa.nombre)
-
     if (validatedData.valores) {
       await empresa.related('valores').sync(validatedData.valores)
     }
-
     if (imagen) empresa.imagen = Attachment.fromFile(imagen)
+
+    empresa.slug = await generateSlug(empresa.nombre)
+    await empresa.save()
 
     return response.created({ data: empresa })
   }
@@ -60,7 +59,7 @@ export default class EmpresasController {
 
     const validatedData = await request.validate(UpdateEmpresaValidator)
     empresa.merge(validatedData)
-    
+
     if (validatedData.valores) {
       await empresa.related('valores').sync(validatedData.valores)
     }
