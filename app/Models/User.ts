@@ -45,7 +45,7 @@ export default class User extends AppBaseModel {
     if (isAdmin(user)) {
       return
     } else {
-      await query.whereNot('rol', TipoRol.ADMIN)
+      await query.where('id', '=', user!.id)
     }
   })
 }
