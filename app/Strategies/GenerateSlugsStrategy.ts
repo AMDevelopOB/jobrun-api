@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid'
-
 function slugify(text: string) {
   return text
     .toString()
@@ -14,8 +12,6 @@ function slugify(text: string) {
 }
 
 export default async function generateSlug(name: string) {
-  const generatedKey = await uuidv4()
-  const slug = `${slugify(name)}-${generatedKey}`
-
+  const slug = `${slugify(name)}`
   return slug
 }

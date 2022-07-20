@@ -1,6 +1,5 @@
 import { args, BaseCommand } from '@adonisjs/core/build/standalone'
 import Database from '@ioc:Adonis/Lucid/Database'
-import { v4 as uuidv4 } from 'uuid'
 
 export default class GenerateSlugs extends BaseCommand {
   @args.string()
@@ -55,10 +54,7 @@ export default class GenerateSlugs extends BaseCommand {
     let entityCount = 0
     for (const entity of entities) {
       /* Updating the slug field of each entity. */
-
-      const generatedKey = uuidv4()
-
-      const slug = `${this.slugify(entity['nombre'])}-${generatedKey}`
+      const slug = `${this.slugify(entity['nombre'])}`
       await Database.from(entityName).where('id', entity.id).andWhereNull('slug').update({ slug })
       entityCount++
       this.logger.logUpdate(
@@ -78,12 +74,5 @@ export default class GenerateSlugs extends BaseCommand {
     } else {
       await this.slugifyEntity(this.entity, this.entity)
     }
-  }
-
-  public async generateUniqueSlug(name: string) {
-    const generatedKey = await uuidv4()
-    const slug = `${this.slugify(name)}-${generatedKey}`
-
-    return slug
   }
 }
