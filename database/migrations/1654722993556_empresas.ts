@@ -10,6 +10,7 @@ export default class extends BaseSchema {
       table.string('nombre').notNullable().unique()
       table.text('descripcion').notNullable()
       table.integer('comunidad_id').unsigned().references('comunidades.id').index()
+      table.integer('pais_id').unsigned().references('paises.id').index()
       table.text('enlace_web')
       table.text('enlace_twitter')
       table.text('enlace_linkedin')

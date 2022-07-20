@@ -25,9 +25,11 @@ export default class EmpresasController {
       .if(nombre, (query) => query.where('nombre', 'ILIKE', `%${nombre}%`))
       .if(descripcion, (query) => query.where('descripcion', 'ILIKE', `%${descripcion}%`))
       .if(creacion, (query) => query.where('creacion', 'ILIKE', creacion))
-      .preload('comunidad', (query) => query.preload('pais'))
+      .if(auth, (query) => query.preload('user'))
+      .preload('comunidad')
+      .preload('pais')
+      .preload('valores')
       .preload('ofertas')
-      .preload('user')
       .orderBy(sortBy, order)
       .paginate(page, limit)
 
@@ -36,10 +38,10 @@ export default class EmpresasController {
 
   public async store({ request, response }: HttpContextContract) {
     const imagen = request.file('imagen') || null
-
     const validatedData = await request.validate(CreateEmpresaValidator)
-
     const empresa = await Empresa.create(validatedData)
+
+    empresa.slug = await generateSlug(empresa.nombre)
 
     if (imagen) empresa.imagen = Attachment.fromFile(imagen)
 
@@ -60,18 +62,22 @@ export default class EmpresasController {
       if (borraImagen) empresa.imagen = null
     }
 
-    empresa.slug = await generateSlug(empresa.nombre)
-
     await empresa.save()
 
     return response.created({ data: empresa })
   }
 
-  public async show({ params: { id }, response }: HttpContextContract) {
+  public async show({ params: { id }, response, auth }: HttpContextContract) {
     const empresa = await Empresa.query(id)
+      .withScopes((scopes) => {
+        scopes.visibleTo(auth.user)
+      })
       .where('id', id)
+      .preload('comunidad')
+      .preload('pais')
+      .preload('valores')
+      .preload('ofertas')
       .preload('user')
-      .preload('comunidad', (query) => query.preload('pais'))
       .firstOrFail()
 
     return response.ok({ data: empresa })
@@ -80,8 +86,14 @@ export default class EmpresasController {
   public async findBySlug({ params: { slug }, response }: HttpContextContract) {
     const empresa = await Empresa.query()
       .where('slug', slug)
-      .preload('user')
-      .preload('comunidad', (query) => query.preload('pais'))
+      .preload('comunidad')
+      .preload('pais')
+      .preload('valores')
+      .preload('ofertas', (query) =>
+        query
+          .preload('comunidad', (query) => query.select('nombre'))
+          .preload('tecnologias', (query) => query.select('nombre'))
+      )
       .firstOrFail()
 
     return response.ok({ data: empresa })

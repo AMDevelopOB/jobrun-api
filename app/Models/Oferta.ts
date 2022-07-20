@@ -23,6 +23,7 @@ import Idioma from './Idioma'
 import User from './User'
 import Categoria from './Categoria'
 import Comunidad from './Comunidad'
+import Pais from './Pais'
 
 export default class Oferta extends AppBaseModel {
   @column()
@@ -71,6 +72,15 @@ export default class Oferta extends AppBaseModel {
   public slug: string
 
   @column()
+  public paisId: number
+
+  @hasOne(() => Pais, {
+    localKey: 'paisId',
+    foreignKey: 'id',
+  })
+  public pais: HasOne<typeof Pais>
+
+  @column()
   public comunidadId: number
 
   @hasOne(() => Comunidad, {
@@ -117,8 +127,9 @@ export default class Oferta extends AppBaseModel {
       return
     } else {
       await user?.load('empresas')
-      const empresas = user?.toObject().empresas.map((empresa) => empresa.id)
-      query.whereIn('empresa_id', empresas)
+      const empresas = await user?.toObject().empresas.map((empresa) => empresa.id)
+      console.log(empresas)
+      await query.whereIn('empresa_id', empresas)
     }
   })
 }

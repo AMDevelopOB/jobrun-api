@@ -3,10 +3,8 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.group(() => {
   Route.post('/login', 'AuthController.login')
   Route.post('/register', 'UsersController.store')
-
-  Route.group(() => {
-    Route.resource('/users', 'UsersController').apiOnly()
-  }).middleware('auth')
+  Route.post('/userNameExists', 'EspecialController.userNameExists')
+  Route.post('/userMailExists', 'EspecialController.userMailExists')
 }).prefix('/auth')
 
 Route.group(() => {

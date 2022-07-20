@@ -15,6 +15,7 @@ import { isAdmin } from 'App/Services/AuthService'
 import AppBaseModel from './AppBaseModel'
 import Comunidad from './Comunidad'
 import Oferta from './Oferta'
+import Pais from './Pais'
 import User from './User'
 import Valor from './Valor'
 
@@ -50,6 +51,15 @@ export default class Empresa extends AppBaseModel {
   public slug: string
 
   @column()
+  public paisId: number
+
+  @hasOne(() => Pais, {
+    localKey: 'paisId',
+    foreignKey: 'id',
+  })
+  public pais: HasOne<typeof Pais>
+
+  @column()
   public comunidadId: number
 
   @hasOne(() => Comunidad, {
@@ -73,11 +83,11 @@ export default class Empresa extends AppBaseModel {
   @hasMany(() => Oferta)
   public ofertas: HasMany<typeof Oferta>
 
-  public static visibleTo = scope((query, user?: User) => {
+  public static visibleTo = scope(async (query, user?: User) => {
     if (isAdmin(user)) {
       return
     } else {
-      query.where('user_id', '=', user!.id)
+      await query.where('user_id', '=', user!.id)
     }
   })
 }

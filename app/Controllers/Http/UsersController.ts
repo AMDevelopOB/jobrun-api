@@ -62,4 +62,25 @@ export default class UsersController {
 
     return response.noContent()
   }
+
+  public async userMailExists({ response, request }: HttpContextContract) {
+    const email = request.input('email') ?? null
+
+    if (!email) return response.badRequest({ error: 'Se debe proporcionar un parámetro "email"' })
+
+    await User.findByOrFail('email', email)
+
+    return response.ok({})
+  }
+
+  public async userNameExists({ response, request }: HttpContextContract) {
+    const username = request.input('username') ?? null
+
+    if (!username)
+      return response.badRequest({ error: 'Se debe proporcionar un parámetro "username"' })
+
+    await User.findByOrFail('username', username)
+
+    return response.ok({})
+  }
 }

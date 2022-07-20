@@ -30,9 +30,7 @@ export default class OfertasController {
     const order = validatedData.order || 'asc'
 
     const ofertas = await Oferta.query()
-      .withScopes((scopes) => {
-        if (auth.user) scopes.visibleTo(auth.user)
-      })
+      .if(auth, (query) => query.withScopes((scope) => scope.visibleTo(auth.user)))
       .if(nombre, (query) => query.where('nombre', 'ILIKE', `%${nombre}%`))
       .if(region, (query) => query.where('region', region))
       .if(experiencia, (query) => query.where('experiencia', experiencia))
@@ -53,7 +51,8 @@ export default class OfertasController {
       .if(beneficios, (query) =>
         query.whereHas('beneficios', (query) => query.whereIn('id', beneficios))
       )
-      .preload('comunidad', (query) => query.preload('pais'))
+      .preload('comunidad')
+      .preload('pais')
       .preload('tecnologias')
       .preload('beneficios')
       .preload('categoria')
@@ -68,7 +67,8 @@ export default class OfertasController {
   public async show({ params: { id }, response }: HttpContextContract) {
     const oferta = await Oferta.query(id)
       .where('id', id)
-      .preload('comunidad', (query) => query.preload('pais'))
+      .preload('comunidad')
+      .preload('pais')
       .preload('tecnologias')
       .preload('beneficios')
       .preload('categoria')
@@ -82,7 +82,8 @@ export default class OfertasController {
   public async findBySlug({ params: { slug }, response }: HttpContextContract) {
     const oferta = await Oferta.query()
       .where('slug', slug)
-      .preload('comunidad', (query) => query.preload('pais'))
+      .preload('comunidad')
+      .preload('pais')
       .preload('tecnologias')
       .preload('beneficios')
       .preload('categoria')
