@@ -102,6 +102,15 @@ export default class OfertasController {
     const validatedData = await request.validate(UpdateOfertaValidator)
     oferta.merge(validatedData)
 
+    if (validatedData.tecnologias) {
+      await oferta.related('tecnologias').sync(validatedData.tecnologias)
+    }
+    if (validatedData.beneficios) {
+      await oferta.related('beneficios').sync(validatedData.beneficios)
+    }
+    if (validatedData.idiomas) {
+      await oferta.related('idiomas').sync(validatedData.idiomas)
+    }
     if (adjunto) oferta.adjunto = Attachment.fromFile(adjunto)
     else {
       if (borraImagen) oferta.adjunto = null
@@ -119,15 +128,12 @@ export default class OfertasController {
     if (validatedData.tecnologias) {
       await oferta.related('tecnologias').sync(validatedData.tecnologias)
     }
-
     if (validatedData.beneficios) {
       await oferta.related('beneficios').sync(validatedData.beneficios)
     }
-
     if (validatedData.idiomas) {
       await oferta.related('idiomas').sync(validatedData.idiomas)
     }
-
     if (adjunto) oferta.adjunto = Attachment.fromFile(adjunto)
 
     oferta.slug = await generateSlug(oferta.nombre)

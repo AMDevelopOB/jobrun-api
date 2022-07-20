@@ -18,6 +18,7 @@ export default class UpdateEmpresaValidator {
     enlaceLinkedin: schema.string.optional({}),
     enlaceBehance: schema.string.optional({}),
     numEmpleados: schema.string.optional({}),
+    valores: schema.array.optional().members(schema.number()),
     creacion: schema.string.optional(),
   })
 

@@ -20,6 +20,7 @@ export default class CreateEmpresaValidator {
     enlaceBehance: schema.string.optional({}),
     numEmpleados: schema.string.optional({}),
     creacion: schema.string.optional(),
+    valores: schema.array.optional().members(schema.number()),
     userId: schema.number([
       rules.exists({
         table: 'users',

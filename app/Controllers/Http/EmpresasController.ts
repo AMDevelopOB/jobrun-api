@@ -43,6 +43,10 @@ export default class EmpresasController {
 
     empresa.slug = await generateSlug(empresa.nombre)
 
+    if (validatedData.valores) {
+      await empresa.related('valores').sync(validatedData.valores)
+    }
+
     if (imagen) empresa.imagen = Attachment.fromFile(imagen)
 
     return response.created({ data: empresa })
@@ -56,7 +60,10 @@ export default class EmpresasController {
 
     const validatedData = await request.validate(UpdateEmpresaValidator)
     empresa.merge(validatedData)
-
+    
+    if (validatedData.valores) {
+      await empresa.related('valores').sync(validatedData.valores)
+    }
     if (imagen) empresa.imagen = Attachment.fromFile(imagen)
     else {
       if (borraImagen) empresa.imagen = null
