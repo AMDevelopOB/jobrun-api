@@ -331,8 +331,8 @@ export default class extends BaseSeeder {
     await oferta6.related('tecnologias').attach([2, 6])
     await oferta6.related('beneficios').attach([4, 5, 6])
 
-    await Database.raw('ALTER SEQUENCE users_id_seq RESTART WITH 7;')
-    await Database.raw('ALTER SEQUENCE empresas_id_seq RESTART WITH 5;')
-    await Database.raw('ALTER SEQUENCE ofertas_id_seq RESTART WITH 6;')
+    await Database.rawQuery('ALTER SEQUENCE users_id_seq RESTART WITH 8;')
+    await Database.rawQuery('ALTER SEQUENCE empresas_id_seq RESTART WITH 6;')
+    await Database.rawQuery('ALTER SEQUENCE ofertas_id_seq RESTART WITH 7;')
   }
 }
