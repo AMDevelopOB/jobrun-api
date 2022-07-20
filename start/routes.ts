@@ -4,7 +4,9 @@ Route.group(() => {
   Route.post('/login', 'AuthController.login')
   Route.post('/register', 'UsersController.store')
 
-  Route.resource('/users', 'UsersController').apiOnly().middleware('auth')
+  Route.group(() => {
+    Route.resource('/users', 'UsersController').apiOnly()
+  }).middleware('auth')
 
   Route.post('/userNameExists', 'EspecialController.userNameExists')
   Route.post('/userMailExists', 'EspecialController.userMailExists')
