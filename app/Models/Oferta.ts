@@ -125,7 +125,7 @@ export default class Oferta extends AppBaseModel {
   public static visibleTo = scope(async (query, user?: User) => {
     if (isAdmin(user)) {
       return
-    } else {
+    } else if (user) {
       await user?.load('empresas')
       const empresas = await user?.toObject().empresas.map((empresa) => empresa.id)
       console.log(empresas)
