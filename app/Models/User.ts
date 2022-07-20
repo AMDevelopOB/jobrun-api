@@ -45,7 +45,7 @@ export default class User extends AppBaseModel {
     if (isAdmin(user)) {
       return
     } else {
-      await query.where('id', '=', user!.id)
+      if (user?.id) await query.where('id', '=', user.id)
     }
   })
 }

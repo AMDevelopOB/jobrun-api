@@ -89,6 +89,7 @@ export default class EmpresasController {
       .preload('comunidad')
       .preload('pais')
       .preload('valores')
+      .preload('user', (query) => query.select('email'))
       .preload('ofertas', (query) =>
         query
           .preload('comunidad', (query) => query.select('nombre'))

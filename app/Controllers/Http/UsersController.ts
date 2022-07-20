@@ -24,9 +24,9 @@ export default class UsersController {
   }
 
   public async show({ params: { id }, auth, response }: HttpContextContract) {
-    const user = await User.query(id)
-      .where('id', id)
+    const user = await User.query()
       .withScopes((scope) => scope.visibleTo(auth.user))
+      .where('id', id)
       .firstOrFail()
 
     return response.ok({ data: user })
