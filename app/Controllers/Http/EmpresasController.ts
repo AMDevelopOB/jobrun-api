@@ -89,7 +89,11 @@ export default class EmpresasController {
       .preload('comunidad')
       .preload('pais')
       .preload('valores')
-      .preload('ofertas')
+      .preload('ofertas', (query) =>
+        query
+          .preload('comunidad', (query) => query.select('nombre'))
+          .preload('tecnologias', (query) => query.select('nombre'))
+      )
       .firstOrFail()
 
     return response.ok({ data: empresa })
