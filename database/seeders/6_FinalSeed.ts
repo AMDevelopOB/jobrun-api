@@ -9,7 +9,7 @@ import { TipoRol } from 'App/Models/Contracts/TipoRol'
 import Empresa from 'App/Models/Empresa'
 import Oferta from 'App/Models/Oferta'
 import User from 'App/Models/User'
-import { generateSlug } from 'App/Strategies/GenerateSlugsStrategy'
+import { generateSlug, generateSlugNumber } from 'App/Strategies/GenerateSlugsStrategy'
 
 export default class extends BaseSeeder {
   public async run() {
@@ -205,7 +205,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 1,
         empresaId: 1,
-        slug: await generateSlug('Front-End Developer'),
+        slug: await generateSlugNumber('Front-End Developer', 1),
       },
       {
         id: 2,
@@ -228,7 +228,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 2,
         empresaId: 2,
-        slug: await generateSlug('Back-End Developer'),
+        slug: await generateSlugNumber('Back-End Developer', 2),
       },
       {
         id: 3,
@@ -251,7 +251,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 3,
         empresaId: 3,
-        slug: await generateSlug('Front-End & Back-End Developer'),
+        slug: await generateSlugNumber('Front-End & Back-End Developer', 3),
       },
       {
         id: 4,
@@ -274,7 +274,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 1,
         empresaId: 5,
-        slug: await generateSlug('Front-End Developer'),
+        slug: await generateSlugNumber('Front-End Developer', 4),
       },
       {
         id: 5,
@@ -297,7 +297,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 2,
         empresaId: 2,
-        slug: await generateSlug('Back-End Developer'),
+        slug: await generateSlugNumber('Back-End Developer', 5),
       },
       {
         id: 6,
@@ -320,7 +320,7 @@ export default class extends BaseSeeder {
         destacado: false,
         categoriaId: 3,
         empresaId: 3,
-        slug: await generateSlug('Front-End & Back-End Developer'),
+        slug: await generateSlugNumber('Front-End & Back-End Developer', 6),
       },
     ])
 

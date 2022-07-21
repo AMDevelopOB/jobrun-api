@@ -24,7 +24,6 @@ export default class OfertasController {
     const tecnologias = request.input('tecnologias') ?? null
     const beneficios = request.input('beneficios') ?? null
     const destacado = request.input('destacado') ?? null
-    const userId = request.input('user_id') ?? null
     const validatedData = await request.validate(SortOfertaValidator)
 
     const sortBy = validatedData.sort_by || 'created_at'
@@ -58,7 +57,7 @@ export default class OfertasController {
       .preload('beneficios')
       .preload('categoria')
       .preload('idiomas')
-      .preload('empresa', (query) => query.where('user_id', '=', userId))
+      .preload('empresa')
       .orderBy(sortBy, order)
       .paginate(page, limit)
 

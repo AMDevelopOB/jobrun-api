@@ -123,9 +123,9 @@ export default class Oferta extends AppBaseModel {
   public idiomas: ManyToMany<typeof Idioma>
 
   public static visibleTo = scope(async (query, user?: User) => {
-    if (isAdmin(user)) {
+    if (isAdmin(user) || !user) {
       return
-    } else if (user) {
+    } else {
       await user?.load('empresas')
       const empresas = await user?.toObject().empresas.map((empresa) => empresa.id)
       await query.whereIn('empresa_id', empresas)
