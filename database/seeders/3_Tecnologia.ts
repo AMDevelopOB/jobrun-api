@@ -4,7 +4,7 @@ import Tecnologia from 'App/Models/Tecnologia'
 export default class extends BaseSeeder {
   public async run() {
     await Tecnologia.updateOrCreateMany(
-      ['id', 'nombre'],
+      ['nombre'],
       [
         {
           nombre: 'JavaScript',

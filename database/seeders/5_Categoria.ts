@@ -4,7 +4,7 @@ import Categoria from 'App/Models/Categoria'
 export default class extends BaseSeeder {
   public async run() {
     await Categoria.updateOrCreateMany(
-      ['id', 'nombre'],
+      ['nombre'],
       [
         {
           nombre: 'FrontEnd',

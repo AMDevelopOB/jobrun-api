@@ -4,7 +4,7 @@ import Beneficio from 'App/Models/Beneficio'
 export default class extends BaseSeeder {
   public async run() {
     await Beneficio.updateOrCreateMany(
-      ['id', 'nombre'],
+      ['nombre'],
       [
         {
           nombre: 'Seguro médico',

@@ -4,7 +4,7 @@ import Valor from 'App/Models/Valor'
 export default class extends BaseSeeder {
   public async run() {
     await Valor.updateOrCreateMany(
-      ['id', 'nombre'],
+      ['nombre'],
       [
         {
           nombre: 'Cercanía',
