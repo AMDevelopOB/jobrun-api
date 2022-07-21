@@ -9,7 +9,7 @@ import { TipoRol } from 'App/Models/Contracts/TipoRol'
 import Empresa from 'App/Models/Empresa'
 import Oferta from 'App/Models/Oferta'
 import User from 'App/Models/User'
-import generateSlug from 'App/Strategies/GenerateSlugsStrategy'
+import { generateSlug } from 'App/Strategies/GenerateSlugsStrategy'
 
 export default class extends BaseSeeder {
   public async run() {
