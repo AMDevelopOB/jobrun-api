@@ -54,8 +54,12 @@ export default class GenerateSlugs extends BaseCommand {
     let entityCount = 0
     for (const entity of entities) {
       /* Updating the slug field of each entity. */
-      const randomizedNumber = Math.floor(Math.random() * (10000 - 1) + 1)
-      const slug = `${this.slugify(entity['nombre'])}-${randomizedNumber}`
+      let slug
+      if (entityName === 'ofertas') {
+        slug = `${this.slugify(entity['nombre'])}-${entity['id']}`
+      } else {
+        slug = `${this.slugify(entity['nombre'])}`
+      }
       await Database.from(entityName).where('id', entity.id).andWhereNull('slug').update({ slug })
       entityCount++
       this.logger.logUpdate(

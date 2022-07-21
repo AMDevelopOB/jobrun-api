@@ -1,7 +1,7 @@
 import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Oferta from 'App/Models/Oferta'
-import generateSlug from 'App/Strategies/GenerateSlugsStrategy'
+import { generateSlugNumber } from 'App/Strategies/GenerateSlugsStrategy'
 import CreateOfertaValidator from 'App/Validators/CreateOfertaValidator'
 import SortOfertaValidator from 'App/Validators/SortOfertaValidator'
 import UpdateOfertaValidator from 'App/Validators/UpdateOfertaValidator'
@@ -24,6 +24,7 @@ export default class OfertasController {
     const tecnologias = request.input('tecnologias') ?? null
     const beneficios = request.input('beneficios') ?? null
     const destacado = request.input('destacado') ?? null
+    const userId = request.input('user_id') ?? null
     const validatedData = await request.validate(SortOfertaValidator)
 
     const sortBy = validatedData.sort_by || 'created_at'
@@ -57,7 +58,7 @@ export default class OfertasController {
       .preload('beneficios')
       .preload('categoria')
       .preload('idiomas')
-      .preload('empresa')
+      .preload('empresa', (query) => query.where('user_id', '=', userId))
       .orderBy(sortBy, order)
       .paginate(page, limit)
 
@@ -136,7 +137,7 @@ export default class OfertasController {
     }
     if (adjunto) oferta.adjunto = Attachment.fromFile(adjunto)
 
-    oferta.slug = await generateSlug(oferta.nombre)
+    oferta.slug = await generateSlugNumber(oferta.nombre, oferta.id)
 
     await oferta.save()
 

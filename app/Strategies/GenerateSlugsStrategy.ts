@@ -11,9 +11,12 @@ function slugify(text: string) {
     .replace(/-+$/, '') // Trim - from end of text
 }
 
-export default async function generateSlug(name: string) {
-  const randomizedNumber = Math.floor(Math.random() * (10000 - 1) + 1)
+export async function generateSlugNumber(name: string, id: number) {
+  const slug = `${slugify(name)}-${id}`
+  return slug
+}
 
-  const slug = `${slugify(name)}-${randomizedNumber}`
+export async function generateSlug(name: string) {
+  const slug = `${slugify(name)}`
   return slug
 }

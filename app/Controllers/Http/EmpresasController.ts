@@ -1,7 +1,7 @@
 import { Attachment } from '@ioc:Adonis/Addons/AttachmentLite'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Empresa from 'App/Models/Empresa'
-import generateSlug from 'App/Strategies/GenerateSlugsStrategy'
+import { generateSlug } from 'App/Strategies/GenerateSlugsStrategy'
 import CreateEmpresaValidator from 'App/Validators/CreateEmpresaValidator'
 import SortEmpresaValidator from 'App/Validators/SortEmpresaValidator'
 import UpdateEmpresaValidator from 'App/Validators/UpdateEmpresaValidator'
