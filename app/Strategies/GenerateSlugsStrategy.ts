@@ -12,6 +12,8 @@ function slugify(text: string) {
 }
 
 export default async function generateSlug(name: string) {
-  const slug = `${slugify(name)}`
+  const randomizedNumber = Math.random() * (10000 - 1) + 1
+
+  const slug = `${slugify(name)}-${randomizedNumber}`
   return slug
 }
