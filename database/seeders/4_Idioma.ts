@@ -3,7 +3,9 @@ import Idioma from 'App/Models/Idioma'
 
 export default class extends BaseSeeder {
   public async run() {
-    await Idioma.createMany([
+    await Idioma.updateOrCreateMany(
+      ['id', 'nombre'],
+      [
       {
         nombre: 'Inglés',
       },

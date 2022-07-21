@@ -3,16 +3,19 @@ import Categoria from 'App/Models/Categoria'
 
 export default class extends BaseSeeder {
   public async run() {
-    await Categoria.createMany([
-      {
-        nombre: 'FrontEnd',
-      },
-      {
-        nombre: 'BackEnd',
-      },
-      {
-        nombre: 'FullStack',
-      },
-    ])
+    await Categoria.updateOrCreateMany(
+      ['id', 'nombre'],
+      [
+        {
+          nombre: 'FrontEnd',
+        },
+        {
+          nombre: 'BackEnd',
+        },
+        {
+          nombre: 'FullStack',
+        },
+      ]
+    )
   }
 }
